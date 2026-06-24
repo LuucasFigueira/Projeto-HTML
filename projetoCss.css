@@ -11,35 +11,67 @@ body {
 
 
 .inicio {
-    width: 100%;
+    width: 96%;
     margin-top: 10vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
-}
-.encomenda {
-    width: 100%;
-    margin-top: 10vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    left: 190px;
-    top: 90px;
+    gap: 30px;
 
 }
-.itens button {
+@media (max-width:600px) {
+    .inicio {
+        width: auto;
+        height: auto;
+
+    }
+}
+#insta, #encomendas {
+    display: flex;
+    align-items: center;
+    gap: 0px;
+}
+#insta h2,
+#encomendas h2{
+    margin: 0;
+    font-size: 18px;
+    font-family: 'Open Sans', 'Roboto', Arial, sans-serif;
+}
     
-}
-
 #logo{
-    margin: 0 auto;
-    max-width: 80%;
-    width: 350px;
-    height: auto;
-    
+    order: 1;
+    max-width: 70%;
+    width: 225px;
+    height: 225px;
+    object-fit: cover;
 }
+
+#instagram{
+    max-width: 80%;
+    width: 120px;
+    min-width: 40%;
+    height: 120px;
+    order: 0;
+}
+  
+#encomenda, #encomendas{
+    max-width: 80%;
+    width: 120px;
+    height: 120px;
+    order: 3;
+}
+
+.login {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.login button {
+    width: auto;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+}
+   
 
 .logo-cardapio {
     width: 100%;
@@ -77,26 +109,52 @@ body {
 
 .produtos{
     margin: 10vh auto;
-    width: 90%;
+    width: 80%;
     max-width: 1000px;
 
     min-height: auto;
     height: auto;
 
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Serve para não deixar os itens ultrapassar o conteiner quebrando a linha */
     justify-content: center;
     align-items: flex-start;
 
-    gap: 50px 50px;
+    gap: 20px 20px;
 
-    padding: 40px 20px;
+    padding:100px 20px; /*serve para os produdos nao ficarem grudados nas laterias do div */
 
     background-color: rgb(255, 248, 245);
     box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
     border-radius: 50px;
 }
 
+.cadastro {
+    margin: 20vh auto;
+    max-width: 500px;
+    width: auto;
+    height: auto;
+    min-height: auto;
+    gap: 0px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding:0px 30px 20px; /*serve para os produdos nao ficarem grudados nas laterias do div (1-topo, 2- laterais, 3-final) */
+
+    background-color: rgb(255, 248, 245);
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+    border-radius: 50px;
+
+    text-align: center;
+}
+.cadastro input {
+    width: 250px;
+    text-align: center;
+}
+.cadastro button {
+    width: auto;
+}
 
 .produtos img {
     margin-top: 20%;
@@ -133,5 +191,55 @@ body {
     margin-top: 30px;
     width: 30px;
     height: 30px;
+    cursor: pointer;
+}
+
+.preco{
+    margin-top: 10px;
+    font-size: 22px;
+    font-weight: bold;
+    color: rgb(120, 45, 45);
+}
+
+#telaLogin {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.caixa-login {
+    width: 300px;
+    height: auto;
+
+    background-color: rgb(253, 235, 246);
+
+    padding: 20px;
+
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.caixa-login #entra {
+   width: auto;
+}
+.caixa-login a, #cadastro {
+    margin: auto;
+    margin-top: auto;
+    width: auto;
+    
+}
+
+#fecharModal {
+    align-self: flex-end;
     cursor: pointer;
 }
