@@ -1,15 +1,26 @@
 // Aumentar a quantidade dos produtos selecionados.
 function aumentar(id){
     let numero = document.getElementById(id);
-    numero.innerText = Number(numero.innerText) + 1;
+    let valor = Number(numero.innerText) + 1;
+
+    numero.innerText = valor;
+
+    // Atualiza o input hidden
+    document.getElementById("input-" + id).value = valor;
 }
 
 function diminuir(id){
     let numero = document.getElementById(id);
+    let valor = Number(numero.innerText);
 
-    if(Number(numero.innerText) > 0){
-        numero.innerText = Number(numero.innerText) - 1;
+    if(valor > 0){
+        valor--;
     }
+
+    numero.innerText = valor;
+
+    // Atualiza o input hidden
+    document.getElementById("input-" + id).value = valor;
 }
 
 // Mostra a tela de login.
@@ -19,25 +30,18 @@ const telaLogin = document.getElementById("telaLogin");
 
 const fecharModal = document.getElementById("fecharModal");
 
-
 btnLogin.addEventListener("click", function() {
-
     telaLogin.style.display = "flex";
-
 });
-
 
 fecharModal.addEventListener("click", function() {
-
     telaLogin.style.display = "none";
-
 });
 
-//validar cadastro do cliente
-
+// Validar cadastro do cliente
 function validarCadastro() {
     let senha = document.getElementById("senha").value;
-    let confSenha = document.getElementById("confsenha").value;
+    let confSenha = document.getElementById("confSenha").value;
 
     if (senha != confSenha) {
         alert("Senhas não coincidem!");

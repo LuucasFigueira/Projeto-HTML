@@ -1,23 +1,31 @@
 <?php
 
+require_once "conexao.php";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
+    $nome = $_POST['nome'];
     $email = $_POST['email'];
     $senha = $_POST['senha'];
     $confirma = $_POST['confSenha'];
     if ($senha == $confirma) {
         $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
         // INSERT no banco aqui
+        $stmt = $conn->prepare("INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)");
+        $stmt->bind_param("sss", $nome, $email, $senhaHash);
 
-        header("Location: index.php"); /* caso tudo de certo, volta para pagina inicial*/ 
-        exit;
+        if ($stmt->execute()) {
+            header("Location: index.php");  /* caso tudo de certo, volta para pagina inicial*/ 
+            exit;
+        } else {
+            echo "Erro ao cadastrar usuário.";
+        }
+        $stmt->close();
 
     }else {
         echo "Senhas não coincidem!";
     }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -33,12 +41,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <form method="POST" target="_self" onsubmit=" return validarCadastro()">
         <div class="cadastro">
             <h2>Cadastro</h2>
+            <p>Digite seu nome</p>
+            <input type="text" id="nome" name="nome" placeholder="Seu nome">
             <p>Digite seu e-mail</p>
             <input type="email" id="email" name="email" placeholder="exemplo@gmail.com">
             <p>Crie uma senha</p>
-            <input type="password" id="senha" name="password" placeholder="senha">
+            <input type="password" id="senha" name="senha" placeholder="senha">
             <p>Confirme a senha</p>
-            <input type="password" id="confsenha" name="confsenha" placeholder="senha">
+            <input type="password" id="confSenha" name="confSenha" placeholder="senha">
             <button type="submit">Confirmar</button>
         </div>
     </form>
