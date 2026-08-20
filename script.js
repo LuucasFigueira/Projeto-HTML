@@ -1,3 +1,4 @@
+
 /* Modal function */
 
 function abrirModal() {
@@ -11,7 +12,7 @@ function fecharModal() {
 let botaoAbrir = document.getElementById("bntLogin");
 
 if (botaoAbrir) {
-    botaoAbrir.onclick = function() {
+    botaoAbrir.onclick = function () {
         abrirModal();
     };
 }
@@ -20,7 +21,7 @@ if (botaoAbrir) {
 let botaoFechar = document.getElementById("fecharModal");
 
 if (botaoFechar) {
-    botaoFechar.onclick = function() {
+    botaoFechar.onclick = function () {
         fecharModal();
     };
 }
@@ -35,11 +36,11 @@ function verificarSenhas() {
 
     if (confSenha.value === '') {
         mensagem.textContent = '';
-    } 
+    }
     else if (senha.value !== confSenha.value) {
         mensagem.textContent = 'As senhas não coincidem.';
         mensagem.style.color = 'red';
-    } 
+    }
     else {
         mensagem.textContent = 'Senhas coincidem.';
         mensagem.style.color = 'green';
@@ -53,8 +54,9 @@ confSenha.addEventListener('input', verificarSenhas); /* Adiciona o evento de in
 
 const formCadastro = document.getElementById('formCadastro');
 
-formCadastro.addEventListener('submit', function(event) {
+formCadastro.addEventListener('submit', function (event) {
     if (senha.value !== confSenha.value) {
         event.preventDefault();
     }
 });
+
